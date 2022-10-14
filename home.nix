@@ -32,6 +32,8 @@
     curl
     wget
     jq
+    zip
+    unzip
     ripgrep
     tmate
     just
