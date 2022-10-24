@@ -28,16 +28,18 @@
 
   home.packages = with pkgs; [
     # Some basics
+    clang
     coreutils
     curl
-    wget
+    git
     jq
-    zip
-    unzip
+    just
+    neovim
     ripgrep
     tmate
-    just
-    git
+    unzip
+    wget
+    zip
   ] ++ lib.optionals stdenv.isDarwin [
     m-cli # useful macOS CLI commands
   ];
