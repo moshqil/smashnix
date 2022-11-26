@@ -16,6 +16,11 @@
   programs.htop.enable = true;
   programs.htop.settings.show_program_path = true;
 
+  programs.zsh = {
+    enable = true;
+    shellAliases.jupyterlab = "nix run ~/code/shells/da/macos#jupyterlab";
+  };
+
   programs.git = {
     enable = true;
     userEmail = "maria.m.marchenko@mail.ru";

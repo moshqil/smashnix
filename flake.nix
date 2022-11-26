@@ -24,7 +24,7 @@
 
     # Configuration for `nixpkgs`
     nixpkgsConfig = {
-      config = { allowUnfree = true; };
+      config = { allowUnfree = true; allowBroken = true; };
     }; 
   in
   {
