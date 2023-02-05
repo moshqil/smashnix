@@ -20,7 +20,8 @@
     enable = true;
     shellAliases = {
       jupyterlab = "nix run ~/code/shells/da/macos#jupyterlab";
-      clan = "${pkgs.clang}/bin/clang++";
+      # clan = "${pkgs.clang}/bin/clang++";
+      nvim = "CC=${pkgs.gcc}/bin/gcc nvim";
     };
   };
 
@@ -34,26 +35,34 @@
     };
   };
 
-  programs.neovim.enable = true;
+  # programs.neovim.enable = true;
 
   home.packages = with pkgs; [
     # Some basics
-    clang
+    # (lib.hiPrio clang)
+    gcc
+    cargo
+    python3
     coreutils
     curl
     git
     pkgs.unstable.qbittorrent  # unsupported system
     jq
     just
-    # neovim
-    clang
+    pkgs.unstable.neovim
     ripgrep
     tmate
-    wlc
+    # vlc
     unzip
     wget
     zip
-  ] ++ lib.optionals stdenv.isDarwin [
+    fd
+    luarocks
+    nodejs
+    nodePackages.npm
+    # nodePackages.remark
+    tree-sitter
+    poetry
     m-cli # useful macOS CLI commands
   ];
 }
