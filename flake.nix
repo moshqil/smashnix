@@ -25,13 +25,14 @@
     # Configuration for `nixpkgs`
     nixpkgsConfig = {
       config = { allowUnfree = true; allowBroken = true; };
+      overlays = [self.overlays.unstable];
     }; 
   in
   {
     # My `nix-darwin` configs
       
     darwinConfigurations = rec {
-      Marias-Air = darwinSystem {
+      Marias-MacBook-Air = darwinSystem {
         system = "aarch64-darwin";
         modules = [ 
           # Main `nix-darwin` config
@@ -65,7 +66,11 @@
             inherit (nixpkgsConfig) config;
           };
         }; 
-      };
+
+	unstable = final: prev: {
+	  unstable = inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin;
+	};
+   };
 
       # TODO: sudo with touch id
       # https://github.com/LnL7/nix-darwin/pull/228

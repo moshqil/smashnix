@@ -18,7 +18,10 @@
 
   programs.zsh = {
     enable = true;
-    shellAliases.jupyterlab = "nix run ~/code/shells/da/macos#jupyterlab";
+    shellAliases = {
+      jupyterlab = "nix run ~/code/shells/da/macos#jupyterlab";
+      clan = "${pkgs.clang}/bin/clang++";
+    };
   };
 
   programs.git = {
@@ -31,17 +34,22 @@
     };
   };
 
+  programs.neovim.enable = true;
+
   home.packages = with pkgs; [
     # Some basics
     clang
     coreutils
     curl
     git
+    pkgs.unstable.qbittorrent  # unsupported system
     jq
     just
-    neovim
+    # neovim
+    clang
     ripgrep
     tmate
+    wlc
     unzip
     wget
     zip
